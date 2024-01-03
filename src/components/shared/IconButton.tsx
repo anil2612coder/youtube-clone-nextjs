@@ -7,7 +7,7 @@ interface IconButtonProps{
 
 const IconButton:React.FC<React.PropsWithChildren<IconButtonProps>> = ({children,className="",onClick}) => {
   return (
-    <div onClick={onClick} className={`cursor-pointer rounded-full p-2 hover:bg-neutral-800 ${className}`}>{children}</div>
+    <div onClick={onClick} className={`cursor-pointer rounded-full sm:p-2 p-1 hover:bg-neutral-800 ${className}`}>{children}</div>
   )
 }
 
