@@ -11,6 +11,8 @@ const UserOptions = () => {
   const currentUser = useContext(CurrentUserContext)
   return currentUser? <><div>
     <IconButton><MdOutlineVideoCall/></IconButton></div></>:  <SignInButton/>
+  
+ 
     
   
 }
