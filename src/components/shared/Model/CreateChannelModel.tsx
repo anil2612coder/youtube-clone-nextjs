@@ -89,7 +89,7 @@ const CreateChannelModel = () => {
         /> 
          </div>
         <div className=" flex p-3 border-t border-neutral-700  justify-end gap-3">
-          <Button type='secondary'> Cancel</Button> 
+          <Button type='secondary' onClick={()=>{createChannelModal?.onClose()}}> Cancel</Button> 
           <Button type='primary' onClick={handleSubmit(onSubmit)}> Create Channel</Button>
           
         
