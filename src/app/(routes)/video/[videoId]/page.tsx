@@ -1,5 +1,7 @@
 import getChannelById from "@/actions/getChannelById";
+import { getRecommendedVideos } from "@/actions/getRecommendedVideos";
 import increaseVideoViewCount from "@/actions/increaseVideoViewCount";
+import VideoCard from "@/components/shared/VideoCard";
 
 import Description from "@/components/video/Description";
 import LikeSubscribeSection from "@/components/video/LikeSubscribeSection/LikeSubscribeSection";
@@ -21,7 +23,7 @@ export default async function VideoPage({
   const video = await increaseVideoViewCount({ videoId });
   const channel = await getChannelById({ channelId: video?.channelId });
  
- 
+  const recommendedVideos = await getRecommendedVideos({ video });
 
   return video && channel  ? (
     <div className="flex flex-col lg:flex-row mx-6 mt-2 gap-4">
@@ -32,8 +34,22 @@ export default async function VideoPage({
         <Description video={video} />  
        
       </div>
-    
-    </div>
+      <div className="w-full lg:w-1/4 flex flex-col gap-4 pb-4">
+        {recommendedVideos
+          ? recommendedVideos.map((recommendedVideo) => {
+              return (
+                <VideoCard
+                  key={recommendedVideo.id}
+                  isVertical={false}
+                  video={recommendedVideo}
+                  channel={recommendedVideo.channel}
+                  channelAvatar
+                />
+              );
+            })
+          : null}
+      </div>
+    </div> 
   ) : (
     <h1>Video not found</h1>
   );
