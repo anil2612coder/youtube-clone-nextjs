@@ -5,6 +5,7 @@ import UploadVideoModal from "@/components/shared/Model/UploadVideoModal";
 import VideoPreview from "@/components/studio/upload/VideoPreview";
 import VideoUploadForm from "@/components/studio/upload/VideoUploadForm";
 import { UploadVideoModalContext } from "@/context/UploadVideoModalContext";
+import { useProtectedRoute } from "@/hooks/useProtectedRoute";
 import axios from "axios";
 import {useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
@@ -12,6 +13,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 export default function UploadPage() {
+  useProtectedRoute()
     const uploadVideoModal = useContext(UploadVideoModalContext);
     const router = useRouter()
 
